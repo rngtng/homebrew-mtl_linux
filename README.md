@@ -26,10 +26,11 @@ Now you have to binaries:
 ### Comiler
 
 ```
-mtl_compiler <input>.mtl <output>.bin
+mtl_compiler <input.mtl> <output.bin>
 ```
 
 ### Simulator
+
 ```
-mtl_simu <input>.mtl
+mtl_simu [--help] [--mac MACADDR] [--boot] --source <input.mtl>
 ```

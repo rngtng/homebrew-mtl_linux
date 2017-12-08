@@ -7,10 +7,11 @@ class MtlLinux < Formula
   url "https://github.com/rngtng/mtl_linux/archive/v.0.0.1.tar.gz"
   sha256 "b2063d7db345765e0e0ee8cb73923e1e1f7e9487858808baec0989143d3aeb1e"
 
-  # depends_on "cmake" => :build
-
   def install
-    system "make", "all"
+    # Temporaty workaround to enforce /usr/bin/gcc usage.
+    # mtl_linux doesn't run when build with clang :(
+    # if fixed use `system "make"` instead
+    Kernel.system({"PATH" => "/usr/bin:#{`echo $PATH`.chomp}"}, "make")
     bin.install "mtl_compiler"
     bin.install "mtl_simu"
   end
